@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "compilerPath": "E:/Dev/MinGW/bin/gcc.exe",
+            "includePath": [
+                "${workspaceFolder}",
+                "E:/Dev/MinGW/lib/gcc/mingw32/6.3.0/include/c++"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "8.1",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "E:/Dev/MinGW/lib/gcc/mingw32/6.3.0/include"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
+}
