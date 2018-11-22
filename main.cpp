@@ -1,7 +1,15 @@
+
 #include <iostream>
+#include <string>
+#include "Security.h"
+#include "StockMarket.h"
 
 main () {
-    std::cout << "Trading stuff" << std::endl;
-    std::cout << "pushed from vs" << std::endl;
-    std::cout << "this is some new code" << std::endl;
+    Security sec = Security("UBI");
+    sec.setPrice(101.00);
+    StockMarket market;
+    market.addSecurity(sec);
+    market.displayMarket();
+    market.removeSecurity("UBI");
+    market.displayMarket();
 }
