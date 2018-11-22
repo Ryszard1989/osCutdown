@@ -7,15 +7,16 @@
 void testSecurity();
 void printTestStatus(std::string testName, bool testResult);
 
+Security testSecuritySetup() {
+    Security sec = Security("UBI");
+    sec.setPrice(101.00);
+    return sec;
+}
+
 void testSecurity() {
     std::string testName = "";
     bool  testStatus = true; //true == pass, false == fail.
-    /*	  Security(std::string name);
-	  std::string getName();
-	  void setPrice(float price);
-	  float getPrice();  */
-    Security sec = Security("UBI");
-    sec.setPrice(101.00);
+    Security sec = testSecuritySetup();
 
     testName = "Security.getName.Basic";
     if((sec.getName().compare("UBI")) == 0) {
@@ -23,9 +24,39 @@ void testSecurity() {
         printTestStatus(testName, testStatus);
     }
     else {
+        testStatus = false;
+        printTestStatus(testName, testStatus);
+    }
+
+    testName = "Security.getPrice.Basic";
+    if(sec.getPrice() == 101.00) {
         testStatus = true;
         printTestStatus(testName, testStatus);
     }
+    else {
+        testStatus = false;
+        printTestStatus(testName, testStatus);
+    }
+}
+
+void testStockMarket() {
+    std::string testName = "";
+    Security sec = testSecuritySetup();
+    StockMarket market;
+    market.addSecurity(sec);
+    
+    testName = "StockMarket.addSecurity.Basic";
+    bool addedToStockMarket = false;
+    bool nameIsRight = false;
+    bool priceIsRight = false;
+    //TODO - Finish test for add security. Test basic attributes of Security inside stockmarket.
+
+    //market.displayMarket();
+    //market.removeSecurity("UBI");
+
+    
+
+
 
 }
 
@@ -45,8 +76,6 @@ void printTestStatus(std::string testName, bool testResult)
 
 
 main () {
-    //Security sec = Security("UBI");
-    //sec.setPrice(101.00);
     //StockMarket market;
     //market.addSecurity(sec);
     //market.displayMarket();
