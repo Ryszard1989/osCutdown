@@ -31,34 +31,71 @@ void testSecurity() {
     testName = "Security.getPrice.Basic";
     if(sec.getPrice() == 101.00) {
         testStatus = true;
-        printTestStatus(testName, testStatus);
     }
     else {
         testStatus = false;
-        printTestStatus(testName, testStatus);
     }
+    printTestStatus(testName, testStatus);
 }
+
 
 void testStockMarket() {
     std::string testName = "";
+    bool  testStatus = false; //true == pass, false == fail.
     Security sec = testSecuritySetup();
     StockMarket market;
-    market.addSecurity(sec);
     
     testName = "StockMarket.addSecurity.Basic";
-    bool addedToStockMarket = false;
-    bool nameIsRight = false;
-    bool priceIsRight = false;
-    //TODO - Finish test for add security. Test basic attributes of Security inside stockmarket.
+    market.addSecurity(sec);
+    if (market.getSecurityCount() == 1) {
+        testStatus = true;
+    }
+    else {
+        testStatus = false;
+    }
+    printTestStatus(testName, testStatus);
 
-    //market.displayMarket();
-    //market.removeSecurity("UBI");
-
+    testName = "StockMarket.addSecurity.DuplicateSecurityNameDoesNotAdd";
+    int added = market.addSecurity(sec);
+    if (added == 1) {
+        testStatus = true;
+    }
+    else {
+        testStatus = false;
+    }
+    printTestStatus(testName, testStatus);
     
+    //TODO - How to access number of securities? Add getSize or have to put unit tests inside?
+    //bool nameIsRight = false;
+    //bool priceIsRight = false;
+    
+    testName = "StockMarket.removeSecurity.Basic";
+    int removed = market.removeSecurity("UBI");
+    if (market.getSecurityCount() == 0 && removed == 0) {
+        testStatus = true;
+    }
+    else {
+        testStatus = false;
+    }
+    printTestStatus(testName, testStatus);
 
-
-
+    testName = "StockMarket.removeSecurity.SecurityDoesNotExist";
+    removed = market.removeSecurity("UBI");
+    if (removed == 1) {
+        testStatus = true;
+    }
+    else {
+        testStatus = false;
+    }
+    printTestStatus(testName, testStatus);
 }
+
+
+
+
+
+
+
 
 void printTestStatus(std::string testName, bool testResult)
 {
@@ -68,7 +105,7 @@ void printTestStatus(std::string testName, bool testResult)
     }
     else
     {
-        std::cout << testName << ":FALSE" << std::endl;
+        std::cout << testName << ":FAIL" << std::endl;
     }
     
 }
@@ -76,11 +113,13 @@ void printTestStatus(std::string testName, bool testResult)
 
 
 main () {
+    testSecurity();
+    testStockMarket();
     //StockMarket market;
     //market.addSecurity(sec);
     //market.displayMarket();
     //market.removeSecurity("UBI");
     //market.displayMarket();
-    testSecurity();
+    
 }
 

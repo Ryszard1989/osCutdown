@@ -14,6 +14,7 @@ class StockMarket {
       int addSecurity(Security security); //Add security if new.
       int removeSecurity(std::string security); //Remove security if it exists.
       void displayMarket(); //pretty print of Stock Market contents
+      int getSecurityCount(); //return number of securities in stock market
 };
 
 #endif
