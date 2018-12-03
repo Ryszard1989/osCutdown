@@ -5,6 +5,7 @@
 #include "StockMarket.h"
 
 void testSecurity();
+void testStockMarket();
 void printTestStatus(std::string testName, bool testResult);
 
 Security testSecuritySetup() {
@@ -13,7 +14,7 @@ Security testSecuritySetup() {
     return sec;
 }
 
-void testSecurity() {
+/*void testSecurity() {
     std::string testName = "";
     bool  testStatus = true; //true == pass, false == fail.
     Security sec = testSecuritySetup();
@@ -36,7 +37,7 @@ void testSecurity() {
         testStatus = false;
     }
     printTestStatus(testName, testStatus);
-}
+}*/
 
 
 void testStockMarket() {
@@ -89,12 +90,6 @@ void testStockMarket() {
     }
     printTestStatus(testName, testStatus);
 }
-
-
-
-
-
-
 
 
 void printTestStatus(std::string testName, bool testResult)
